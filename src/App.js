@@ -1,25 +1,59 @@
-// src/App.js
-//iajsdiasd
 import React, { useState } from 'react';
 import './App.css';
-import ItemList from './ItemList';
-import ItemForm from './ItemForm';
 
 function App() {
-  const [items, setItems] = useState([]);
+  const [name, setName] = useState('');
+  const [submitted, setSubmitted] = useState(false);
 
-  const addItem = (item) => {
-    setItems([...items, item]);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('http://localhost:3001/api/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name }),
+      });
+
+      if (!response.ok) {
+        throw new Error('sorry Failed to submit data');
+      }
+
+      setSubmitted(true);
+      setName('');
+    } catch (error) {
+      console.error('Error submitting data:', error);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    setName(e.target.value);
   };
 
   return (
     <div className="App">
-      <h1>Item List</h1>
-      <ItemForm addItem={addItem} />
-      <ItemList items={items} />
+      <header className="App-header">
+        <p>
+          Hello World
+        </p>
+
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Enter your name"
+            value={name}
+            onChange={handleInputChange}
+            required
+          />
+          <button type="submit">Submit</button>
+        </form>
+
+        {submitted && <p>Data submitted successfully!</p>}
+      </header>
     </div>
   );
 }
 
 export default App;
-
