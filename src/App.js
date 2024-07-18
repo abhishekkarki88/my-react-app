@@ -9,7 +9,7 @@ function App() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://abhishek.learn.cloudlaya.com:3006/api/submit', {
+      const response = await fetch('http://47.129.48.150:3006/api/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
