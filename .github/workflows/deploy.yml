@@ -39,4 +39,4 @@ jobs:
             sudo docker stop frontend || true
             sudo docker rm frontend || true
             sudo docker run -d --name frontend -p 4000:80 abhishek840/frontend:latest
-            echo "It is completed succesfully"
+            echo "It is completed succesfully done"
