@@ -388,14 +388,14 @@ jobs:
           port: ${{ secrets.EC2_PORT }}
          
 ******To map your AWS EC2 instance's IP address to domain names like abhishek.learn.cloudlaya.com for the frontend and api-abhishek.learn.cloudlaya.com for the API, you'll need to follow these general steps://***
-
+note: for frontend container do port mapping as -p 3000:80   and for backend put --network=host. 
 1. Obtain a Domain Name
 If you haven't already, register a domain name (e.g., cloudlaya.com) through a domain registrar like Namecheap, GoDaddy, or AWS Route 53.
 
 2. Configure DNS Records
 Once you have your domain name registered, you'll need to configure DNS records to point to your EC2 instance's IP address. Here’s how you can do it:
 
-Route 53 Configuration (AWS)
+********Route 53 Configuration (AWS)*******
 If you're using AWS Route 53 for DNS management:
 
 Create a Hosted Zone:
