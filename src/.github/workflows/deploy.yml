@@ -1,3 +1,8 @@
+name: Build, publish, and deploy Backend Docker image to EC2
+on:
+  push:
+    branches:
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,16 +28,8 @@ jobs:
       
       - name: Tag Docker image
         run: |
-          docker tag restappback:latest 654654282708.dkr.ecr.ap-southeast-1.amazonaws.com/restappback:latest
+          docker tag restappback:latest 654654282708.dkr.ecr.ap-southeast-1.amazonaws.com/my-react-app:latest
       
       - name: Push Docker image to Amazon ECR
         run: |
-          docker push 654654282708.dkr.ecr.ap-southeast-1.amazonaws.com/restappback:latest
-
-
-
-
-
-
-
-
+          docker push 654654282708.dkr.ecr.ap-southeast-1.amazonaws.com/my-react-app:latest
